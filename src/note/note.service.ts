@@ -32,7 +32,7 @@ export class NoteService {
 
     }
 
-    async updateNote(id: number, updateNoteDto: UpdateNoteDto) {
+    async updateNoteByCategory(id: number, updateNoteDto: UpdateNoteDto) {
 
         const category = await this.categoryRepo.findOneBy({ id });
         if (!category) throw new BadRequestException("Category not found");
@@ -45,8 +45,14 @@ export class NoteService {
         if (!note) throw new BadRequestException("No note found in this category");
         category.note = [note];
         Object.assign(note, updateNoteDto)
-        return this.noteRepo.save(note)
+        return this.categoryRepo.save(category)
 
+    }
+
+    updateNote(id: number, updateNoteDto: UpdateNoteDto) {
+        const note = this.noteRepo.findOneBy({ id })
+        if (!note) throw new BadRequestException("no note by this id")
+        return this.noteRepo.update(id, updateNoteDto)
     }
 
 

@@ -23,6 +23,11 @@ export class NoteController {
     }
 
     @Patch(':id')
+    updateNoteByCategory(@Param('id') id: number, @Body() updateNoteDto: UpdateNoteDto) {
+        return this.noteService.updateNoteByCategory(id, updateNoteDto)
+    }
+
+    @Patch("update/:id")
     updateNote(@Param('id') id: number, @Body() updateNoteDto: UpdateNoteDto) {
         return this.noteService.updateNote(id, updateNoteDto)
     }
