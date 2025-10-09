@@ -1,9 +1,11 @@
-import { Body, Controller, Delete, Get, Param, Patch, Post } from '@nestjs/common';
+import { Body, Controller, Delete, Get, Param, Patch, Post, UseInterceptors } from '@nestjs/common';
 import { NoteService } from './note.service';
 import { CreateNoteDto } from 'src/dto/create-note.dto';
 import { UpdateNoteDto } from 'src/dto/update-note.dto';
 
+
 @Controller('note')
+
 export class NoteController {
     constructor(private noteService: NoteService) { }
 

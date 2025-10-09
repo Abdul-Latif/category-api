@@ -5,7 +5,7 @@ import { Repository } from 'typeorm';
 import { CreateNoteDto } from 'src/dto/create-note.dto';
 import { UpdateNoteDto } from 'src/dto/update-note.dto';
 import { CategoryEntity } from 'src/entity/category.entity';
-import { CategoryModule } from 'src/category/category.module';
+
 
 @Injectable()
 export class NoteService {
